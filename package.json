@@ -1,7 +1,7 @@
 {
   "name": "lightweight-leaflet-map",
-  "version": "1.0.0",
-  "description": "A small, framework-independent wrapper for easy Leaflet maps, draggable locations, and coordinate popups.",
+  "version": "1.0.1",
+  "description": "A lightweight Leaflet map starter for browser apps, with draggable markers, location picking, coordinate popups, and configurable tile layers.",
   "author": {
     "name": "Sushil Shrestha",
     "email": "sushil.shrestha3000@gmail.com"
@@ -46,10 +46,18 @@
   ],
   "keywords": [
     "leaflet",
+    "leaflet-map",
+    "leaflet-starter",
     "map",
-    "wrapper",
+    "maps",
+    "map-starter",
+    "location-picker",
+    "draggable-markers",
+    "geolocation",
+    "vanilla-js",
     "javascript",
-    "location"
+    "browser",
+    "esm"
   ],
   "repository": {
     "type": "git",

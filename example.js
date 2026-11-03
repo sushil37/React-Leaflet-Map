@@ -290,6 +290,13 @@ map.on('moveend zoomend', () => {
 map.on('moveend', () => eventLog(`moveend · ${fmt(map.getCenter())}`));
 map.on('zoomend', () => eventLog(`zoomend · ${map.getZoom()}`));
 map.on('baselayerchange', event => { eventLog(`baselayerchange · ${event.name}`); say(`Basemap switched to ${event.name}.`); });
+listen('copy-install', 'click', async () => {
+  try {
+    await navigator.clipboard.writeText($('install-command').textContent);
+    $('copy-install').textContent = 'Copied!';
+    say('Install command copied. See the integration guide for the stylesheet and container setup.');
+  } catch { say('Clipboard unavailable. Select and copy the install command above.'); }
+});
 listen('copy-code', 'click', async () => {
   try { await navigator.clipboard.writeText(lastCode); $('copy-code').textContent = 'Copied!'; }
   catch { say('Clipboard unavailable. Select and copy the code below.'); }
