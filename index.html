@@ -1,26 +1,34 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="%BASE_URL%favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="An interactive map of locations in Kathmandu." />
-    <link rel="manifest" href="%BASE_URL%manifest.json" />
-    <title>Leaflet Map</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <main>
-      <header>
-        <h1>A simple Leaflet map</h1>
-        <p>Add a location, drag a marker, or switch between roads and topography.</p>
-        <button id="add-location" type="button">Add location at center</button>
-        <button id="locate" type="button">Find my location</button>
-        <p id="status" role="status">Click a marker to see its coordinates.</p>
-      </header>
-      <div id="map" role="region" aria-label="Map of locations in Kathmandu"></div>
-      <footer>Built on <a href="https://leafletjs.com">Leaflet</a> by Volodymyr Agafonkin and contributors.</footer>
-    </main>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Try Leaflet markers, shapes, GeoJSON, and map events in a simple interactive playground.">
+  <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg">
+  <link rel="manifest" href="%BASE_URL%manifest.json">
+  <title>Leaflet Map Starter · Playground</title>
+</head>
+<body>
+  <noscript>Enable JavaScript to explore the map playground.</noscript>
+  <header class="topbar"><a class="brand" href="./"><img src="%BASE_URL%favicon.svg" alt="" width="36" height="36">Leaflet Map Starter <span>PLAYGROUND</span></a><a href="https://github.com/sushil37/leaflet-map-starter">View source ↗</a></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">A little curiosity. A lot of possibilities.</p><h1>Make yourself at home on the map.</h1><p>Drop a pin, draw an area, follow a trail. Try the controls and take the code with you.</p></div><div class="intro-note"><span class="dot"></span> Plain JavaScript. Powered by Leaflet.</div></section>
+    <div class="workspace">
+      <aside class="panel controls" aria-label="Playground controls">
+        <section><div class="section-title"><span>01</span><h2>Start with a scenario</h2></div><label for="scenario">What are you building?</label><select id="scenario"><option value="places">Office & pickup points</option><option value="venue">Event venue</option><option value="delivery">Delivery location picker</option><option value="trail">Walking itinerary</option></select><p id="scenario-help" class="hint"></p></section>
+        <section><div class="section-title"><span>02</span><h2>Make it yours</h2></div><label for="marker-name">Marker name</label><input id="marker-name" value="My place" maxlength="80"><button id="add-location" class="primary">＋ Add pin at map center</button><label class="check"><input type="checkbox" id="click-to-add"> Click the map to add pins</label><label class="check"><input type="checkbox" id="draggable" checked> Allow marker dragging</label><label class="check"><input type="checkbox" id="scroll-zoom"> Zoom with the scroll wheel</label></section>
+        <section><div class="section-title"><span>03</span><h2>Style your map</h2></div><div class="color-grid"><div><label for="marker-color">Marker color</label><input type="color" id="marker-color" value="#14634e"></div><div><label for="shape-color">Shape color</label><input type="color" id="shape-color" value="#6661ac"></div></div><label for="marker-style">Marker style</label><select id="marker-style"><option value="pin">Map pin</option><option value="dot">Circle dot</option><option value="number">Numbered badge</option><option value="default">Leaflet blue</option></select><label for="shape-opacity">Shape fill <output id="opacity-value">20%</output></label><input type="range" id="shape-opacity" min="0" max="80" step="5" value="20"><p class="hint">Updates existing and new features. Copy the code to bring your own styling.</p></section>
+        <section><div class="section-title"><span>04</span><h2>Explore Leaflet</h2></div><div class="button-grid"><button id="circle">Radius circle</button><button id="polygon">Area polygon</button><button id="route">Sample trail</button><button id="geojson">GeoJSON points</button></div><label for="radius">Circle radius <output id="radius-value">500 m</output></label><input type="range" id="radius" min="100" max="2000" step="100" value="500"><p class="hint">Shapes appear around the map center. The trail is a sample line, not calculated directions.</p></section>
+        <section class="button-grid"><button id="fit">Fit all features</button><button id="locate">Find my location</button><button id="clear">Clear features</button><button id="reset">Reset playground</button></section>
+      </aside>
+      <section class="map-column" aria-label="Interactive map and developer tools">
+        <div class="map-shell"><div class="map-label"><span class="dot"></span> Your live canvas <span id="feature-count">0 features</span></div><div id="map" role="region" aria-label="Interactive Leaflet playground map"></div><div class="map-bottom"><span id="coordinates">Move or click the map to explore</span><span id="zoom-level">Zoom 13</span></div></div>
+        <p id="status" role="status">Ready to explore.</p>
+        <section class="panel developer"><div class="developer-header"><div><p class="eyebrow">FROM PLAYING TO BUILDING</p><h2 id="code-title">Start with a few lines</h2></div><button id="copy-code">Copy code</button></div><p id="code-help" class="hint">Wrapper setup. Import the stylesheet once and give #map an explicit height.</p><pre><code id="code"></code></pre><details><summary>Your features as GeoJSON</summary><p class="hint">Export pins and shapes for use in your app. A circle exports its center point with radiusMeters; GeoJSON has no circle geometry.</p><button id="export">Download GeoJSON</button><pre><code id="geojson-preview"></code></pre></details><details><summary>Recent map events</summary><ol id="events" aria-label="Recent map events"></ol></details></section>
+      </section>
+    </div>
+  </main>
+  <footer><span>Built on <a href="https://leafletjs.com">Leaflet</a> by Volodymyr Agafonkin and contributors.</span><a href="https://github.com/sushil37/leaflet-map-starter#readme">Integration guide ↗</a></footer>
+  <script type="module" src="/src/main.js"></script>
+</body>
 </html>

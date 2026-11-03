@@ -1,3 +1,4 @@
+import L from 'leaflet';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { createMap } from './map.js';
 
@@ -146,5 +147,20 @@ describe('container layout changes', () => {
     } finally {
       vi.unstubAllGlobals();
     }
+  });
+});
+
+describe('native marker customization', () => {
+  it('supports shared options and per-marker overrides without affecting other markers', () => {
+    const shared = L.divIcon({ html: 'A', className: 'shared-icon' });
+    const custom = L.divIcon({ html: 'B', className: 'custom-icon' });
+    const { markers, addMarker } = mount({ markerOptions: { icon: shared, draggable: false, opacity: 0.6 } });
+    expect(markers[0].options.icon).toBe(shared);
+    expect(markers[0].dragging.enabled()).toBe(false);
+    const marker = addMarker({ name: 'Custom', latitude: 1, longitude: 2 }, { icon: custom, draggable: true });
+    expect(marker.options.icon).toBe(custom);
+    expect(marker.options.opacity).toBe(0.6);
+    expect(marker.dragging.enabled()).toBe(true);
+    expect(markers[0].options.icon).toBe(shared);
   });
 });

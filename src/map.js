@@ -89,10 +89,11 @@ export function createMap(container, options = {}) {
     if (providers.length > 1) L.control.layers(baseLayers).addTo(map);
     const markers = [];
 
-    function addMarker(location) {
+    function addMarker(location, markerOptions = {}) {
       validateLocation(location);
       const marker = L.marker([location.latitude, location.longitude], {
         icon, draggable: true, title: location.name ?? 'Location',
+        ...options.markerOptions, ...markerOptions,
       }).addTo(map);
       function updatePopup() {
         const { lat, lng } = marker.getLatLng();
@@ -115,7 +116,7 @@ export function createMap(container, options = {}) {
       return marker;
     }
 
-    locations.forEach(addMarker);
+    locations.forEach(location => addMarker(location));
     map.on('locationfound', ({ latlng }) => {
       addMarker({ name: 'Your location', latitude: latlng.lat, longitude: latlng.lng });
       map.flyTo(latlng, map.getZoom());

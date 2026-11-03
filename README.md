@@ -39,11 +39,14 @@ npm start
 
 Open http://localhost:3000. The demo already loads [`example.js`](./example.js). It shows:
 
-- Named office and pickup locations with coordinate popups.
-- Draggable markers and a visible coordinate update after dragging.
-- Adding a location at the center of the map.
-- Browser geolocation with a readable failure message.
-- Switching between road and topographic maps.
+- Four scenarios: office locations, a fixed event venue, a delivery point picker, and a sample itinerary.
+- Named pins, click-to-add, dragging, scroll zoom, fit bounds, and geolocation.
+- Live marker colors and styles: map pins, dots, numbered badges, and classic Leaflet blue.
+- Circles with adjustable radius, polygon boundaries, sample lines, and GeoJSON points.
+- Shape colors and fill opacity, with styling applied to existing and new features.
+- Copyable code, a GeoJSON preview/download, a bounded event log, and a reset action.
+
+The playground uses native Leaflet APIs for advanced features. Its styles, controls, and export tools are demo code and are excluded from the reusable library bundle.
 
 No backend, UI framework, or API key is needed for this demo. Tiles need internet access. Geolocation requires browser permission and HTTPS, or localhost.
 
@@ -266,6 +269,33 @@ Use the URL, zoom limits, and exact attribution supplied by your provider. `opti
 
 Pass `tileProviders: []` to start without a basemap, for example while adding your own Leaflet layers. This suppresses the wrapper's tile requests; it does not provide offline tiles.
 
+### Customize markers without extra dependencies
+
+Use Leaflet's native `divIcon` with your own DOM element, or pass an `L.icon` for your own image. The wrapper does not prescribe a color system or require an icon library.
+
+```js
+import L from 'leaflet';
+
+const dot = document.createElement('span');
+Object.assign(dot.style, {
+  display: 'block', width: '24px', height: '24px',
+  background: '#14634e', border: '3px solid white',
+  borderRadius: '50%', boxShadow: '0 2px 8px #0003',
+});
+const icon = L.divIcon({
+  html: dot, className: '', iconSize: [24, 24], iconAnchor: [12, 12],
+});
+const instance = createMap('map', {
+  locations: [],
+  markerOptions: { draggable: false },
+});
+const marker = instance.addMarker({
+  name: 'Our office', latitude: 27.71, longitude: 85.326,
+}, { icon, draggable: true });
+```
+
+For a shared icon across multiple markers, use an image icon or an HTML string with trusted content. A `divIcon` containing an HTMLElement should be created separately for each marker, because a DOM node can only have one parent. Native options also support `opacity`, `keyboard`, and `zIndexOffset`. Keep any dynamic labels as text rather than injecting untrusted HTML.
+
 ### Put a map in a hidden tab or modal
 
 After revealing your map container, let the browser calculate its size, then refresh Leaflet:
@@ -287,12 +317,13 @@ For animated panels, run this after the opening transition ends. Call `instance.
 | `center` | Initial Leaflet LatLng, commonly `[latitude, longitude]` | Average of initial locations |
 | `zoom` | Initial zoom | `13` |
 | `mapOptions` | Pass-through Leaflet map options | Scroll wheel zoom disabled |
+| `markerOptions` | Native Leaflet marker options applied to every wrapper marker | Bundled blue icon, draggable |
 | `tileProviders` | Array of `{ name, url, attribution, options? }`; `[]` disables basemap tiles | Roads and Topographic |
 | `onMarkerChange(location, index)` | Called after a marker finishes dragging | No callback |
 
 Top-level `center` and `zoom` take precedence over `mapOptions.center` and `mapOptions.zoom`. Otherwise the map options are used before wrapper defaults. Empty `locations: []` starts without markers and uses a Kathmandu fallback center. Coordinates must be finite numbers: latitude −90 to 90, longitude −180 to 180. Invalid initial locations are rejected before mounting.
 
-`addMarker(location)` returns a Leaflet marker. `markers` holds markers created by the wrapper, in creation order; treat this array as read-only. Removing a marker directly through Leaflet does not remove it from this array. `map` exposes the [Leaflet API](https://leafletjs.com/reference-1.9.4.html).
+`addMarker(location, markerOptions?)` returns a Leaflet marker. Per-marker options override shared `markerOptions`, which override wrapper defaults. `markers` holds markers created by the wrapper, in creation order; treat this array as read-only. Removing a marker directly through Leaflet does not remove it from this array. `map` exposes the [Leaflet API](https://leafletjs.com/reference-1.9.4.html).
 
 ## Footprint and boundaries
 
