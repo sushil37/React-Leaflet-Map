@@ -53,12 +53,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sushil37/lightweight-leaflet-map.git"
+    "url": "git+https://github.com/sushil37/leaflet-map-starter.git"
   },
   "bugs": {
-    "url": "https://github.com/sushil37/lightweight-leaflet-map/issues"
+    "url": "https://github.com/sushil37/leaflet-map-starter/issues"
   },
-  "homepage": "https://github.com/sushil37/lightweight-leaflet-map#readme",
+  "homepage": "https://github.com/sushil37/leaflet-map-starter#readme",
   "peerDependencies": {
     "leaflet": "^1.9.4"
   }
