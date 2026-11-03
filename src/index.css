@@ -433,3 +433,7 @@ input[type=color] {
   .controls { order: 0; }
   .developer { order: 1; width: 100%; }
 }
+
+footer > div { max-width: 560px; }
+footer strong { color: #294b3b; font-size: 12px; }
+footer p { line-height: 1.7; margin: 8px 0; }
