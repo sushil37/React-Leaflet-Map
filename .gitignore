@@ -1,23 +1,35 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Dependencies and local package-manager state
+node_modules/
+.pnp
+.pnp.*
+.npm/
+.pnpm-store/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# Lockfiles are excluded from new commits by project preference.
+# Existing tracked lockfiles still need to be excluded when staging.
+package-lock.json
+npm-shrinkwrap.json
+yarn.lock
+pnpm-lock.yaml
+bun.lock
+bun.lockb
 
-# testing
-/coverage
+# Generated builds, test output, caches, and packed npm artifacts
+dist/
+build/
+coverage/
+.vite/
+.cache/
+*.tsbuildinfo
+*.tgz
 
-# production
-/build
+# Local configuration (keep example environment files shareable)
+.env
+.env.*
+!.env.example
+!.env.*.example
 
-# misc
+# Logs and operating-system files
+*.log
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+Thumbs.db
