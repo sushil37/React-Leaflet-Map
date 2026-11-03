@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="An interactive map of locations in Kathmandu." />
+    <link rel="manifest" href="/manifest.json" />
+    <title>Leaflet Map</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <main>
+      <header>
+        <h1>A simple Leaflet map</h1>
+        <p>Add a location, drag a marker, or switch between roads and topography.</p>
+        <button id="add-location" type="button">Add location at center</button>
+        <button id="locate" type="button">Find my location</button>
+        <p id="status" role="status">Click a marker to see its coordinates.</p>
+      </header>
+      <div id="map" role="region" aria-label="Map of locations in Kathmandu"></div>
+      <footer>Built on <a href="https://leafletjs.com">Leaflet</a> by Volodymyr Agafonkin and contributors.</footer>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

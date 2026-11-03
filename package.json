@@ -1,49 +1,65 @@
 {
-  "name": "React-Leaflet-Map",
+  "name": "lightweight-leaflet-map",
   "version": "1.0.0",
-  "description": "A simple Leaflet map component for React",
-  "private": true,
+  "description": "A small, framework-independent wrapper for easy Leaflet maps, draggable locations, and coordinate popups.",
   "author": {
     "name": "Sushil Shrestha",
     "email": "sushil.shrestha3000@gmail.com"
   },
   "engines": {
-    "node": ">=14.0.0",
-    "npm": ">=7.0.0"
+    "node": "^20.19.0 || >=22.12.0",
+    "npm": ">=10.0.0"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },  
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build"
-  },
-  "dependencies": {
-    "leaflet": "^1.9.4",
-    "leaflet-defaulticon-compatibility": "^0.1.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-leaflet": "^4.2.1",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build && vite build --config vite.lib.config.js && vite build --config vite.lib.config.js --mode standalone",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "prepack": "npm test && npm run build"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
-  }, 
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  } 
- 
+    "vite": "^8.3.5",
+    "vitest": "^5.1.0",
+    "jsdom": "^30.1.3",
+    "leaflet": "^1.9.4"
+  },
+  "type": "module",
+  "license": "MIT",
+  "main": "./dist/lib/leaflet-map.js",
+  "module": "./dist/lib/leaflet-map.js",
+  "exports": {
+    ".": {
+      "import": "./dist/lib/leaflet-map.js"
+    },
+    "./style.css": "./dist/lib/leaflet-map.css",
+    "./standalone": "./dist/lib/leaflet-map.global.js"
+  },
+  "files": [
+    "dist/lib",
+    "LICENSE",
+    "THIRD-PARTY-NOTICES.txt"
+  ],
+  "sideEffects": [
+    "**/*.css",
+    "./example.js"
+  ],
+  "keywords": [
+    "leaflet",
+    "map",
+    "wrapper",
+    "javascript",
+    "location"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sushil37/React-Leaflet-Map.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sushil37/React-Leaflet-Map/issues"
+  },
+  "homepage": "https://github.com/sushil37/React-Leaflet-Map#readme",
+  "peerDependencies": {
+    "leaflet": "^1.9.4"
+  }
 }
