@@ -52,7 +52,7 @@ No backend, UI framework, or API key is needed for this demo. Tiles need interne
 
 ## Integrate in an application
 
-The npm package is prepared for a future release; registry availability and the final package name have not been confirmed. Once published under this name:
+Install the wrapper and its Leaflet peer dependency:
 
 ```sh
 npm install lightweight-leaflet-map leaflet
@@ -331,7 +331,7 @@ There is no React dependency or extra runtime UI framework. The current producti
 
 Road and topographic providers are supplied by default; `tileProviders` can replace them. Keep attribution visible and follow the [OpenStreetMap tile policy](https://operations.osmfoundation.org/policies/tiles/) and [OpenTopoMap guidance](https://opentopomap.org/about). Public tile servers provide no availability guarantee. Coordinate persistence, address search, routing, and offline tiles are outside the current wrapper.
 
-## Development and future npm release
+## Development and releases
 
 ```sh
 npm test
@@ -344,7 +344,7 @@ Lockfile changes are excluded from commits by project preference. Use `npm insta
 
 `dist/` contains the demo; `dist/lib/` contains reusable assets. Library builds exclude demo assets. The package exports the ES module and stylesheet and includes the standalone bundle, README, license, and third-party notices. `prepack` runs the tests and build before packaging.
 
-Before the first release, confirm ownership and availability of the package name, choose the intended version, review `npm pack --dry-run`, and test the tarball in a separate consumer application. Then publish from your npm account using `npm publish`. Nothing has been published by this repository setup.
+For a release, update the package version, review `npm pack --dry-run`, and test the tarball in a separate consumer application. Publish from the maintainer npm account using `npm publish`, and create the matching GitHub release tag. The package is `lightweight-leaflet-map`; the repository and demo are named Leaflet Map Starter.
 
 ## Suggested enhancements
 
