@@ -1,56 +1,12 @@
 # Lightweight Leaflet Map
 
-A small wrapper around the **official [Leaflet](https://leafletjs.com) package** for applications that need a useful map without a lot of setup. Give it a container and some locations: it handles tile layers, marker images, draggable markers, and coordinate popups.
+A lightweight **Leaflet map starter for browser apps**, built around the official [Leaflet](https://leafletjs.com) package. Add draggable markers, pick locations, and configure tile layers with plain JavaScript. No React or other UI framework is required.
 
 **Leaflet does the mapping.** It was created by **Volodymyr Agafonkin**, with contributions from the Leaflet community. This project builds on their work and does not claim authorship of Leaflet. It uses the official npm dependency, rather than maintaining a fork of Leaflet's source. This is an independent wrapper, with no claimed affiliation or endorsement.
 
-## Who is this for?
+**[Try the interactive playground](https://sushil37.github.io/leaflet-map-starter/)** · [View on npm](https://www.npmjs.com/package/lightweight-leaflet-map) · [API reference](#api)
 
-Use it for a contact page with office locations, a pickup or delivery location picker, a small directory, or a dashboard where users adjust a location. It works with plain JavaScript and frameworks that can provide a DOM element.
-
-Use Leaflet directly when you need custom rendering or a complex GIS application. This wrapper keeps the common setup short and exposes the underlying map and markers when you need more.
-
-### Common application scenarios
-
-| Scenario | What users can do | What your application supplies |
-| --- | --- | --- |
-| Store or branch locator | View branches and open a selected location | Branch data and a searchable list |
-| Delivery or pickup form | Choose a point and adjust its coordinates | Form fields and address validation |
-| Event or wedding page | See a fixed venue and meeting points | Venue coordinates and event details |
-| Property listings | See properties together and focus on one | Listing data, filters, and detail links |
-| Field inspection | Mark a survey or maintenance location | Report form, record IDs, and storage |
-| Travel itinerary | View accommodation and planned stops | Ordered destinations; routing is separate |
-| Admin data correction | Move an incorrectly placed marker | Save permissions and your update API |
-| Saved personal places | Restore locations in the same browser | Optional local storage and a reset action |
-| Provider-backed production app | Use your chosen tile service | Provider account, attribution, and usage limits |
-
-The examples below cover these building blocks without adding runtime dependencies. Each snippet is independent unless it explicitly uses an existing `instance`. Import `createMap` and the stylesheet as shown in the integration section, and provide the referenced HTML elements.
-
-**[Open the live demo](https://sushil37.github.io/leaflet-map-starter/)** — hosted on GitHub Pages.
-
-## Try the working example
-
-Use Node.js 20.19+ or 22.12+ and npm 10+.
-
-```sh
-npm install
-npm start
-```
-
-Open http://localhost:3000. The demo already loads [`example.js`](./example.js). It shows:
-
-- Four scenarios: office locations, a fixed event venue, a delivery point picker, and a sample itinerary.
-- Named pins, click-to-add, dragging, scroll zoom, fit bounds, and geolocation.
-- Live marker colors and styles: map pins, dots, numbered badges, and classic Leaflet blue.
-- Circles with adjustable radius, polygon boundaries, sample lines, and GeoJSON points.
-- Shape colors and fill opacity, with styling applied to existing and new features.
-- Copyable code, a GeoJSON preview/download, a bounded event log, and a reset action.
-
-The playground uses native Leaflet APIs for advanced features. Its styles, controls, and export tools are demo code and are excluded from the reusable library bundle.
-
-No backend, UI framework, or API key is needed for this demo. Tiles need internet access. Geolocation requires browser permission and HTTPS, or localhost.
-
-## Integrate in an application
+## Quick start: add a Leaflet map without React
 
 Install the wrapper and its Leaflet peer dependency:
 
@@ -77,6 +33,54 @@ Supply a container with an explicit height:
 
 The npm ES module shares your application's Leaflet dependency. It does not bundle a second copy. This is a browser library: in server-rendered applications, import and mount it on the client.
 
+![Leaflet Map Starter playground with draggable markers, styling controls, and copyable code](https://raw.githubusercontent.com/sushil37/leaflet-map-starter/main/docs/images/playground.png)
+
+## Who is this for?
+
+Use it for a contact page with office locations, a pickup or delivery location picker, a small directory, or a dashboard where users adjust a location. It works with plain JavaScript and frameworks that can provide a DOM element.
+
+Use Leaflet directly when you need custom rendering or a complex GIS application. This wrapper keeps the common setup short and exposes the underlying map and markers when you need more.
+
+### Common application scenarios
+
+| Scenario | What users can do | What your application supplies |
+| --- | --- | --- |
+| Store or branch locator | View branches and open a selected location | Branch data and a searchable list |
+| Delivery or pickup form | Choose a point and adjust its coordinates | Form fields and address validation |
+| Event or wedding page | See a fixed venue and meeting points | Venue coordinates and event details |
+| Property listings | See properties together and focus on one | Listing data, filters, and detail links |
+| Field inspection | Mark a survey or maintenance location | Report form, record IDs, and storage |
+| Travel itinerary | View accommodation and planned stops | Ordered destinations; routing is separate |
+| Admin data correction | Move an incorrectly placed marker | Save permissions and your update API |
+| Saved personal places | Restore locations in the same browser | Optional local storage and a reset action |
+| Provider-backed production app | Use your chosen tile service | Provider account, attribution, and usage limits |
+
+The examples below cover these building blocks without adding runtime dependencies. Each snippet is independent unless it explicitly uses an existing `instance`. Import `createMap` and the stylesheet as shown in the quick start, and provide the referenced HTML elements.
+
+**[Open the live demo](https://sushil37.github.io/leaflet-map-starter/)** — hosted on GitHub Pages.
+
+## Try the working example
+
+Use Node.js 20.19+ or 22.12+ and npm 10+.
+
+```sh
+npm install
+npm start
+```
+
+Open http://localhost:3000. The demo already loads [`example.js`](./example.js). It shows:
+
+- Four scenarios: office locations, a fixed event venue, a delivery point picker, and a sample itinerary.
+- Named pins, click-to-add, dragging, scroll zoom, fit bounds, and geolocation.
+- Live marker colors and styles: map pins, dots, numbered badges, and classic Leaflet blue.
+- Circles with adjustable radius, polygon boundaries, sample lines, and GeoJSON points.
+- Shape colors and fill opacity, with styling applied to existing and new features.
+- Copyable code, a GeoJSON preview/download, a bounded event log, and a reset action.
+
+The playground uses native Leaflet APIs for advanced features. Its styles, controls, and export tools are demo code and are excluded from the reusable library bundle.
+
+No backend, UI framework, or API key is needed for this demo. Tiles need internet access. Geolocation requires browser permission and HTTPS, or localhost.
+
 ## Use in a plain HTML page
 
 Run `npm run build`, then copy `dist/lib/` into your website. The standalone bundle includes Leaflet and marker images. Keep the third-party notice file with your distribution.
@@ -96,7 +100,7 @@ Serve the files over HTTP. Load either the standalone bundle or the npm module. 
 
 ## Useful examples
 
-### Pick a delivery location
+### Leaflet location picker for delivery forms
 
 Start with one marker. The callback runs when the user finishes dragging it; save the result in your application form or backend.
 
@@ -269,7 +273,7 @@ Use the URL, zoom limits, and exact attribution supplied by your provider. `opti
 
 Pass `tileProviders: []` to start without a basemap, for example while adding your own Leaflet layers. This suppresses the wrapper's tile requests; it does not provide offline tiles.
 
-### Customize markers without extra dependencies
+### Customize Leaflet markers with plain JavaScript
 
 Use Leaflet's native `divIcon` with your own DOM element, or pass an `L.icon` for your own image. The wrapper does not prescribe a color system or require an icon library.
 

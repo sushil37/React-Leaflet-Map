@@ -437,3 +437,24 @@ input[type=color] {
 footer > div { max-width: 560px; }
 footer strong { color: #294b3b; font-size: 12px; }
 footer p { line-height: 1.7; margin: 8px 0; }
+
+.install-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: white;
+  flex-wrap: wrap;
+}
+.install-bar > div { flex: 1; min-width: 0; }
+.install-bar span { display: block; font-size: 11px; color: #527364; margin-bottom: 6px; }
+.install-bar code { font-size: 13px; overflow-wrap: anywhere; }
+.install-bar a { font-size: 12px; }
+.intro > div:first-child { max-width: 880px; }
+@media (max-width:700px) {
+  .install-bar { gap: 12px; padding: 16px; }
+  .install-bar > div { flex-basis: 100%; }
+}

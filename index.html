@@ -3,16 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Try Leaflet markers, shapes, GeoJSON, and map events in a simple interactive playground.">
+  <meta name="description" content="A simple Leaflet map starter for JavaScript browser apps. Try draggable markers, location picking, custom icons, and copyable examples.">
   <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg">
   <link rel="manifest" href="%BASE_URL%manifest.json">
-  <title>Leaflet Map Starter · Playground</title>
+  <link rel="canonical" href="https://sushil37.github.io/leaflet-map-starter/">
+  <meta property="og:title" content="Leaflet Map Starter — Simple JavaScript Maps">
+  <meta property="og:description" content="Try draggable markers, location picking, custom icons, and copyable Leaflet examples. No React required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sushil37.github.io/leaflet-map-starter/">
+  <meta property="og:image" content="https://raw.githubusercontent.com/sushil37/leaflet-map-starter/main/docs/images/playground.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Leaflet Map Starter — Simple JavaScript Maps</title>
 </head>
 <body>
   <noscript>Enable JavaScript to explore the map playground.</noscript>
   <header class="topbar"><a class="brand" href="./"><img src="%BASE_URL%favicon.svg" alt="" width="36" height="36">Leaflet Map Starter <span>PLAYGROUND</span></a><a href="https://github.com/sushil37/leaflet-map-starter">View source ↗</a></header>
   <main>
-    <section class="intro"><div><p class="eyebrow">A little curiosity. A lot of possibilities.</p><h1>Make yourself at home on the map.</h1><p>Drop a pin, draw an area, follow a trail. Try the controls and take the code with you.</p></div><div class="intro-note"><span class="dot"></span> Plain JavaScript. Powered by Leaflet.</div></section>
+    <section class="intro"><div><p class="eyebrow">Simple setup. Native Leaflet flexibility.</p><h1>A simple Leaflet map starter for JavaScript apps.</h1><p>Add draggable markers, pick locations, and customize your map with a small Leaflet wrapper. Try the playground, then copy the code.</p></div><div class="intro-note"><span class="dot"></span> Plain JavaScript. Powered by Leaflet.</div></section>
+    <section class="install-bar" aria-label="Install the npm package">
+      <div><span>Install in your app</span><code id="install-command">npm install lightweight-leaflet-map leaflet</code></div>
+      <button id="copy-install" type="button">Copy install command</button>
+      <a href="https://www.npmjs.com/package/lightweight-leaflet-map">View package on npm ↗</a>
+    </section>
     <div class="workspace">
       <aside class="panel controls" aria-label="Playground controls">
         <section><div class="section-title"><span>01</span><h2>Start with a scenario</h2></div><label for="scenario">What are you building?</label><select id="scenario"><option value="places">Office & pickup points</option><option value="venue">Event venue</option><option value="delivery">Delivery location picker</option><option value="trail">Walking itinerary</option></select><p id="scenario-help" class="hint"></p></section>
