@@ -53,13 +53,17 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sushil37/React-Leaflet-Map.git"
+    "url": "git+https://github.com/sushil37/leaflet-map-starter.git"
   },
   "bugs": {
-    "url": "https://github.com/sushil37/React-Leaflet-Map/issues"
+    "url": "https://github.com/sushil37/leaflet-map-starter/issues"
   },
-  "homepage": "https://github.com/sushil37/React-Leaflet-Map#readme",
+  "homepage": "https://sushil37.github.io/leaflet-map-starter/",
   "peerDependencies": {
     "leaflet": "^1.9.4"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

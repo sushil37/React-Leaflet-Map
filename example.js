@@ -165,7 +165,7 @@ function loadScenario() {
   if (scenario === 'venue') { map.setZoom(16); features.getLayers()[0].openPopup(); }
   if (scenario === 'trail') addTrail();
   else if (scenario === 'delivery') showCode('Choose a delivery point', `let marker;\ninstance.map.on('click', ({ latlng }) => {\n  if (marker) marker.setLatLng(latlng);\n  else marker = instance.addMarker({\n    name: 'Delivery point', latitude: latlng.lat, longitude: latlng.lng,\n  });\n});`, 'Wrapper markers plus the Leaflet click event. Click again to reposition the same point.');
-  else showCode(scenario === 'venue' ? 'Show a fixed venue' : 'Start with a few lines', `const locations = ${JSON.stringify(locations, null, 2)};\nlocations.forEach(place => {\n  const marker = instance.addMarker(place);${scenario === 'venue' ? '\n  marker.dragging.disable();\n  marker.openPopup();' : ''}\n});`, 'Wrapper API for markers and popups. The setup below works with a bundler after the package is published.');
+  else showCode(scenario === 'venue' ? 'Show a fixed venue' : 'Start with a few lines', `const locations = ${JSON.stringify(locations, null, 2)};\nlocations.forEach(place => {\n  const marker = instance.addMarker(place);${scenario === 'venue' ? '\n  marker.dragging.disable();\n  marker.openPopup();' : ''}\n});`, 'Wrapper API for markers and popups. The setup below works with a bundler and the npm package.');
   say(descriptions[scenario]);
   eventLog(`scenario · ${scenario}`);
 }
