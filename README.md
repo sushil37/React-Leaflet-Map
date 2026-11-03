@@ -26,6 +26,8 @@ Use Leaflet directly when you need custom rendering or a complex GIS application
 
 The examples below cover these building blocks without adding runtime dependencies. Each snippet is independent unless it explicitly uses an existing `instance`. Import `createMap` and the stylesheet as shown in the integration section, and provide the referenced HTML elements.
 
+**[Open the live demo](https://sushil37.github.io/leaflet-map-starter/)** — hosted on GitHub Pages.
+
 ## Try the working example
 
 Use Node.js 20.19+ or 22.12+ and npm 10+.
@@ -332,3 +334,7 @@ Wrapper by **Sushil Shrestha**, released under the [MIT license](./LICENSE).
 Mapping powered by **[Leaflet](https://github.com/Leaflet/Leaflet)**, created by **[Volodymyr Agafonkin](https://agafonkin.com)** and maintained by its contributors. Leaflet is licensed under **BSD-2-Clause**, with copyright notices for Volodymyr Agafonkin and CloudMade. The complete upstream license is retained in [THIRD-PARTY-NOTICES.txt](./THIRD-PARTY-NOTICES.txt) and copied into the browser distribution.
 
 Map data and styles are credited separately in the visible map attribution. Thank you to the Leaflet, OpenStreetMap, and OpenTopoMap communities for the work that makes this wrapper possible.
+
+## Demo hosting
+
+GitHub Actions runs tests, builds the demo, and deploys `dist/` to GitHub Pages on each push to `main`. You can also run the deployment manually from the Actions tab. The relative asset base supports hosting under the repository path. No paid hosting service is required.
